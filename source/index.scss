@@ -2,7 +2,22 @@ $blue : #00F6FF;
 $margin__blocks : 125px;
 $blue__gradient: linear-gradient(to top right, #00ADB4, #00F6FF);
 
-@import "../source/twentytwenty.scss";
+
+
+$maxWidth: 1210;
+
+@mixin adaptiv-font($pcSize, $mobSize) {
+	$addSize: $pcSize - $mobSize;
+	$addMobSize: $addSize + $addSize * 0.7;
+
+	@media (max-width: 767px) {
+		font-size: calc(#{$mobSize + px} + #{$addMobSize} * ((100vw - 320px) / #{$maxWidth}));
+	}
+
+	@media (min-width: 767px) {
+		font-size: calc(#{$mobSize + px} + #{$addSize} * (100vw / #{$maxWidth}));
+	}
+}
 
 .emblem_adress{
 			display: flex;
@@ -13,9 +28,10 @@ $blue__gradient: linear-gradient(to top right, #00ADB4, #00F6FF);
 				align-items: center;
 				margin-right: 30px;
 
-				img{
-					margin-right: 6px;
-					height: calc(100% / 2);	
+				i{
+					margin-right: 10px;
+					font-size: 48px;
+					color: $blue;
 				}
 			}
 
@@ -43,8 +59,10 @@ $blue__gradient: linear-gradient(to top right, #00ADB4, #00F6FF);
 				p{
 					margin: 0;
 				}
-				img{
-					margin-right: 20px;
+				i{
+					font-size: 30px;
+					color: $blue;
+					margin-right: 15px;
 				}
 
 
@@ -64,7 +82,7 @@ $blue__gradient: linear-gradient(to top right, #00ADB4, #00F6FF);
 						padding: 20px 50px;
 						position: relative;
 						font-size: 24px;
-						transition: all ease 1s;
+						transition: 1s all ease;
 						display: inline-block;
 
 						&:hover{
@@ -138,6 +156,7 @@ body{
 
 h1{
 	font-size: 36px;
+
 	font-weight: 900;
 }
 
@@ -291,7 +310,6 @@ h3{
 		}
 		.why__preview{
 			margin-top: 50px;
-			width: 800px;
 			transition: 0.8s all ease;
 			opacity: 0;
 
@@ -1045,6 +1063,8 @@ margin-bottom: $margin__blocks;
 					cursor: pointer;
 					background: black;
 
+					transition: 1s all ease;
+
 					left: -15px;
 					transform: rotate(40deg);
 				}
@@ -1057,6 +1077,8 @@ margin-bottom: $margin__blocks;
 					height: 2px;
 					background: black;
 
+					transition: 1s all ease;
+
 					left: -15px;
 					top: 18px;
 					transform: rotate(-40deg);
@@ -1065,7 +1087,6 @@ margin-bottom: $margin__blocks;
 				}
 				.question__answer{
 					display: none;
-					background: rgb(128, 128, 128, 0.5);
 					padding: 10px;
 				}
 			}
@@ -1230,4 +1251,28 @@ opacity: 0;
 			display: inline;
 		}
 	}
+}
+
+@media screen and ( max-width: 1265px ) {
+
+	.container{
+		width: 100%;
+		padding: 0 10px;
+	}
+
+	.delivery .delivery__content__right img{
+		width: 600px;
+	}
+
+	.delivery .delivery__content__right._active {
+    transform: translate(-5%,0);
+}
+
+	.no__problem .container .no__problem__content .no__problem__content__left .material {
+
+		width: 120px;
+		height: 120px;
+
+		}
+
 }
