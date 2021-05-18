@@ -1,4 +1,4 @@
-
+//Animation of scroll
 let animItems = document.querySelectorAll('._anim-item');
 
 if( animItems.length > 0 ) {
@@ -43,9 +43,44 @@ if( animItems.length > 0 ) {
 		return { top: rect.top + scrollTop, left: rect.left + scrollLeft } 
 	}
 }
-
+//Slider
 $(document).ready(function() {
 	$('.question').click(function(event) {
 		$(this).toggleClass('active').next().slideToggle(300);
 	})	
+})
+//Before/After
+$(function() {
+	$('#slider').twentytwenty({
+		before_label : 'До',
+		after_label : 'После'
+	});
+});
+
+$(function() {
+	$('#slider__example1').twentytwenty({
+		before_label : 'До',
+		after_label : 'После'
+	});
+});
+
+$(function() {
+	$('#slider__example2').twentytwenty({
+		before_label : 'До',
+		after_label : 'После'
+	});
+});
+
+$(function() {
+	$('#slider__example3').twentytwenty({
+		before_label : 'До',
+		after_label : 'После'
+	});
+});
+
+//Infinity slider
+$(document).ready(function() {
+	$('.equipment__slider__body').slick({
+		slidesToShow: 3,
+	});
 })

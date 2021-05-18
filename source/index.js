@@ -50,4 +50,6 @@ $(document).ready(function() {
 	})	
 })
 
-	$('#box__preview').twentytwenty();
+$(function() {
+	$('#slider').twentytwenty();
+})
