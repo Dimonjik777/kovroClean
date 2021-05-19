@@ -43,12 +43,89 @@ if( animItems.length > 0 ) {
 		return { top: rect.top + scrollTop, left: rect.left + scrollLeft } 
 	}
 }
-//Slider
+//Spoiler and modification of the cleaning process and equipment
 $(document).ready(function() {
+
+	//Spoiler
 	$('.question').click(function(event) {
 		$(this).toggleClass('active').next().slideToggle(300);
-	})	
-})
+	});
+
+	//Modification of the cleaning process and equipment
+
+	$('.arrival').click(function(event) {
+
+		$('.arrival').toggleClass('active');
+		$('.removal').removeClass('active');
+		//Slider
+		$('.equipment__slider__removal').fadeOut(500);
+		setTimeout(function() {
+		$('.equipment__slider__removal').removeClass('active');
+		}, 500);
+		
+
+		$('.equipment__slider__arrival').fadeIn(500);
+		setTimeout(function() {
+		$('.equipment__slider__arrival').toggleClass('active');
+		}, 500)
+		//Clean
+
+		$('.equipment__slider__removal').fadeOut(500);
+		setTimeout(function() {
+		$('.clean__content__removal').removeClass('active');
+		}, 500);
+
+		$('.equipment__slider__arrival').fadeIn(500);
+		setTimeout(function() {
+		$('.clean__content__arrival').toggleClass('active');
+		}, 500);
+	});
+
+	$('.removal').click(function(event) {
+		$('.removal').toggleClass('active');
+		$('.arrival').removeClass('active');
+		//Slider
+		$('.equipment__slider__arrival').fadeOut(500);
+		setTimeout(function() {
+		$('.equipment__slider__arrival').removeClass('active');
+		}, 500);
+		
+
+		$('.equipment__slider__removal').fadeIn(500);
+		setTimeout(function() {
+		$('.equipment__slider__removal').toggleClass('active');
+		}, 500)
+		//Clean
+
+		$('.equipment__slider__arrival').fadeOut(500);
+		setTimeout(function() {
+		$('.clean__content__arrival').removeClass('active');
+		}, 500);
+
+		$('.equipment__slider__removal').fadeIn(500);
+		setTimeout(function() {
+		$('.clean__content__removal').toggleClass('active');
+		}, 500);
+	})
+
+	//Timer
+	let countDownDate = new Date('May 21, 2021 14:00:00').getTime();
+
+	let x = setInterval(function() {
+		let now = new Date().getTime();
+		let distance = countDownDate - now; 
+
+		let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+		let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+		let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+		document.querySelector('.hours').innerHTML = hours;
+		document.querySelector('.minutes').innerHTML = minutes;
+		document.querySelector('.seconds').innerHTML = seconds;
+	}, 1000)
+
+});
+
 //Before/After
 $(function() {
 	$('#slider').twentytwenty({
@@ -80,7 +157,15 @@ $(function() {
 
 //Infinity slider
 $(document).ready(function() {
-	$('.equipment__slider__body').slick({
+	$('.equipment__slider__removal').slick({
 		slidesToShow: 3,
+		adaptiveHeight: true,
+	});
+})
+
+$(document).ready(function() {
+	$('.equipment__slider__arrival').slick({
+		slidesToShow: 3,
+		adaptiveHeight: true,
 	});
 })
