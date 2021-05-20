@@ -67,6 +67,19 @@ $(function() {
 	});
 });
 
+	//Privacy open
+
+	$('.protect').click(function() {
+		$('.dark').toggleClass('active');
+		$('.privacy').toggleClass('active');
+	});
+
+	//Privacy close
+
+	$('.close').click(function() {
+		$('.dark').removeClass('active');
+		$('.privacy').removeClass('active');
+	})
 
 	//Spoiler
 	$('.question').click(function(event) {
@@ -154,11 +167,14 @@ $(document).ready(function() {
 		slidesToShow: 3,
 		adaptiveHeight: true,
 	});
-})
 
-$(document).ready(function() {
 	$('.equipment__slider__arrival').slick({
 		slidesToShow: 3,
 		adaptiveHeight: true,
 	});
+
+	if (window.matchMedai("(max-width: 1420px)")) {
+
+		
+	}
 })
