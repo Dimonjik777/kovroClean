@@ -46,6 +46,28 @@ if( animItems.length > 0 ) {
 //Spoiler and modification of the cleaning process and equipment
 $(document).ready(function() {
 
+	
+//Before/After
+$(function() {
+	$('#slider').twentytwenty({
+		before_label : 'До',
+		after_label : 'После'
+	});
+	$('#slider__example1').twentytwenty({
+		before_label : 'До',
+		after_label : 'После'
+	});
+	$('#slider__example2').twentytwenty({
+		before_label : 'До',
+		after_label : 'После'
+	});
+	$('#slider__example3').twentytwenty({
+		before_label : 'До',
+		after_label : 'После'
+	});
+});
+
+
 	//Spoiler
 	$('.question').click(function(event) {
 		$(this).toggleClass('active').next().slideToggle(300);
@@ -124,35 +146,6 @@ $(document).ready(function() {
 		document.querySelector('.seconds').innerHTML = seconds;
 	}, 1000)
 
-});
-
-//Before/After
-$(function() {
-	$('#slider').twentytwenty({
-		before_label : 'До',
-		after_label : 'После'
-	});
-});
-
-$(function() {
-	$('#slider__example1').twentytwenty({
-		before_label : 'До',
-		after_label : 'После'
-	});
-});
-
-$(function() {
-	$('#slider__example2').twentytwenty({
-		before_label : 'До',
-		after_label : 'После'
-	});
-});
-
-$(function() {
-	$('#slider__example3').twentytwenty({
-		before_label : 'До',
-		after_label : 'После'
-	});
 });
 
 //Infinity slider
