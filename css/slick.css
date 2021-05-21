@@ -117,3 +117,11 @@
 .slick-arrow.slick-hidden {
     display: none;
 }
+
+@media screen and (max-width: 1420px) {
+    .slick-initialized .slick-slide {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+}

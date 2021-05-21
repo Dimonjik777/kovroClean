@@ -86,7 +86,43 @@ $(function() {
 		$(this).toggleClass('active').next().slideToggle(300);
 	});
 
-	//Modification of the cleaning process and equipment
+
+	//Timer
+	let countDownDate = new Date('May 21, 2021 14:00:00').getTime();
+
+	let x = setInterval(function() {
+		let now = new Date().getTime();
+		let distance = countDownDate - now; 
+
+		let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+		let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+		let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+		document.querySelector('.hours').innerHTML = hours;
+		document.querySelector('.minutes').innerHTML = minutes;
+		document.querySelector('.seconds').innerHTML = seconds;
+	}, 1000)
+
+});
+
+
+
+
+	if ( window.innerWidth > 1420) {
+
+		//Infinity slider
+		$(document).ready(function() {
+		$('.equipment__slider__removal').slick({
+		slidesToShow: 3,
+		adaptiveHeight: true,
+	});
+
+	$('.equipment__slider__arrival').slick({
+		slidesToShow: 3,
+		adaptiveHeight: true,
+	});
+
+		//Modification of the cleaning process and equipment
 
 	$('.arrival').click(function(event) {
 
@@ -142,39 +178,80 @@ $(function() {
 		$('.clean__content__removal').toggleClass('active');
 		}, 500);
 	})
+	}
+)} else {
 
-	//Timer
-	let countDownDate = new Date('May 21, 2021 14:00:00').getTime();
+		$('.clean__content__arrival_mobile').toggleClass('active');
 
-	let x = setInterval(function() {
-		let now = new Date().getTime();
-		let distance = countDownDate - now; 
 
-		let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-		let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-		let seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-		document.querySelector('.hours').innerHTML = hours;
-		document.querySelector('.minutes').innerHTML = minutes;
-		document.querySelector('.seconds').innerHTML = seconds;
-	}, 1000)
-
-});
-
-//Infinity slider
-$(document).ready(function() {
-	$('.equipment__slider__removal').slick({
-		slidesToShow: 3,
+		//Infinity slider
+		$(document).ready(function() {
+		$('.equipment__slider__removal').slick({
+		slidesToShow: 1,
 		adaptiveHeight: true,
 	});
 
 	$('.equipment__slider__arrival').slick({
-		slidesToShow: 3,
+		slidesToShow: 1,
 		adaptiveHeight: true,
 	});
 
-	if (window.matchMedai("(max-width: 1420px)")) {
+		//Modification of the cleaning process and equipment
 
+	$('.arrival').click(function(event) {
+
+		$('.arrival').toggleClass('active');
+		$('.removal').removeClass('active');
+		//Slider
+		$('.equipment__slider__removal').fadeOut(500);
+		setTimeout(function() {
+		$('.equipment__slider__removal').removeClass('active');
+		}, 500);
 		
-	}
-})
+
+		$('.equipment__slider__arrival').fadeIn(500);
+		setTimeout(function() {
+		$('.equipment__slider__arrival').toggleClass('active');
+		}, 500)
+		//Clean
+
+		$('.clean__content__removal_mobile').fadeOut(500);
+		setTimeout(function() {
+		$('.clean__content__removal_mobile').removeClass('active');
+		}, 500);
+
+		$('.clean__content__arrival_mobile').fadeIn(500);
+		setTimeout(function() {
+		$('.clean__content__arrival_mobile').toggleClass('active');
+		}, 500);
+	});
+
+	$('.removal').click(function(event) {
+		$('.removal').toggleClass('active');
+		$('.arrival').removeClass('active');
+		//Slider
+		$('.equipment__slider__arrival').fadeOut(500);
+		setTimeout(function() {
+		$('.equipment__slider__arrival').removeClass('active');
+		}, 500);
+		
+
+		$('.equipment__slider__removal').fadeIn(500);
+		setTimeout(function() {
+		$('.equipment__slider__removal').toggleClass('active');
+		}, 500)
+		//Clean
+
+		$('.equipment__slider__arrival').fadeOut(500);
+		setTimeout(function() {
+		$('.clean__content__arrival_mobile').removeClass('active');
+		}, 500);
+
+		$('.equipment__slider__removal').fadeIn(500);
+		setTimeout(function() {
+		$('.clean__content__removal_mobile').toggleClass('active');
+		}, 500);
+	})
+	})
+
+		}
